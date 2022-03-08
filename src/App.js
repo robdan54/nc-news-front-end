@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './Components/Header';
 import Home from './Components/Home'
+import FullArticle from './Components/FullArticle';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Header/>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/article/:article_id' element={<FullArticle />} />
       </Routes>
       
 		</div>
