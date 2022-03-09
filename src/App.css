@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  
+}
+
+.articleList{
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
