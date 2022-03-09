@@ -17,7 +17,6 @@ export default function Home() {
 	useEffect(() => {
 		setIsLoading(true);
 		fetchTopics().then((topicsFromApi) => {
-			console.log(topicsFromApi.map((topicFromApi) => topicFromApi.slug));
 			setTopics(topicsFromApi.map((topicFromApi) => topicFromApi.slug))
 			setIsLoading(false)
 		})
