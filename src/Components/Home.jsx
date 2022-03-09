@@ -31,8 +31,8 @@ export default function Home() {
 	}, [filter]);
 
 	return !isLoading ? (
-		<div className='mb-2'>
-			<DropdownButton id='filter' title={filter || 'Filter' } variant='dark' align='start'>
+		<div className='mb-2 articleList'>
+			<DropdownButton id='filter' title={filter || 'Filter' } variant='dark' style={{alignSelf:'start'}}>
 				{topics.map((topic) => {
 					return <Dropdown.Item key={topic} onClick={() => setFilter(topic)}>{ topic }</Dropdown.Item>;
 				})}
