@@ -4,20 +4,21 @@ import { useState } from 'react';
 import { incArticleVotes } from '../utils/articlesApi';
 
 export default function Voter({ article, setVoteCount }) {
-	const [isDisabled, setIsDisabled] = useState(false);
+	const [hasVoted, setHasVoted] = useState(false);
 
-	return (
-		<button
-			onClick={() => {
-				setVoteCount((currCount) => currCount + 1);
-				incArticleVotes(article.article_id).catch(() => {
-					setVoteCount((currCount) => currCount - 1);
-					setIsDisabled(false);
-				});
-				setIsDisabled(true);
-			}}
-			disabled={isDisabled}>
-			Up-Vote
-		</button>
+	const handleVote = (inc) => {
+		setVoteCount((currCount) => currCount + inc);
+
+		incArticleVotes(article.article_id, inc).catch(() => {
+			setVoteCount((currCount) => currCount - inc);
+			setHasVoted((voted) => !voted);
+		});
+		setHasVoted(!hasVoted)
+	};
+
+	return hasVoted ? (
+		<button onClick={() => handleVote(-1)}>Take Back</button>
+	) : (
+		<button onClick={() => handleVote(1)}>Up-Vote</button>
 	);
 }
