@@ -27,7 +27,6 @@ export default function ArticleCard({ article }) {
 					<dd key={article.article_id + 'votes'}>votes: {voteCount}</dd>
 				</dl>
 			</ListGroupItem>
-			<Voter article={article} setVoteCount={setVoteCount}/>
 		</>
 	);
 }
