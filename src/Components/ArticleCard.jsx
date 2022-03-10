@@ -29,7 +29,10 @@ export default function ArticleCard({ article }) {
 			<button
 				onClick={() => {
 					setVoteCount((currCount) => currCount + 1);
-					incArticleVotes(article.article_id);
+					incArticleVotes(article_id).catch(() => {
+						setVoteCount((currCount) => currCount - 1);
+						setIsDisabled(false);
+					});
 					setIsDisabled(true);
 				}}
 				disabled={isDisabled}>

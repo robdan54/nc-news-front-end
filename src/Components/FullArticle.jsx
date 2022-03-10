@@ -12,17 +12,15 @@ export default function FullArticle() {
 	const [voteCount, setVoteCount] = useState(0);
 	const [isDisabled, setIsDisabled] = useState(false);
 	const { article_id } = useParams();
-	
+
 	useEffect(() => {
 		setIsLoading(true);
 		fetchArticleById(article_id).then((articleFromApi) => {
 			setArticle(articleFromApi);
 			setIsLoading(false);
-			setVoteCount(articleFromApi.votes)
+			setVoteCount(articleFromApi.votes);
 		});
 	}, [article_id]);
-
-	
 
 	return !isLoading ? (
 		<article>
@@ -43,8 +41,11 @@ export default function FullArticle() {
 			<button
 				onClick={() => {
 					setVoteCount((currCount) => currCount + 1);
-					incArticleVotes(article_id);
 					setIsDisabled(true);
+					incArticleVotes(article_id).catch(() => {
+						setVoteCount((currCount) => currCount - 1);
+						setIsDisabled(false)
+					});
 				}}
 				disabled={isDisabled}>
 				Up-Vote
