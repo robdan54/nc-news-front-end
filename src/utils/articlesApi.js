@@ -13,3 +13,9 @@ export const fetchArticleById = (id) => {
         return res.data.article
     });
 }
+
+export const incArticleVotes = (id) => {
+    return axios.patch(
+			`https://nc-news-robin.herokuapp.com/api/articles/${id}`, {inc_votes: 1}
+		);
+}
