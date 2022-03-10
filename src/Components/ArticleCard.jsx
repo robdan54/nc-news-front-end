@@ -1,14 +1,15 @@
 /** @format */
 
+
 import { useState } from 'react';
 import { ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { incArticleVotes } from '../utils/articlesApi';
+import Voter from './Voter';
+
 
 export default function ArticleCard({ article }) {
-	const [voteCount, setVoteCount] = useState(article.votes);
+	const [voteCount, setVoteCount] = useState(article.votes)
 
-	const [isDisabled, setIsDisabled] = useState(false);
 
 	
 
@@ -26,18 +27,7 @@ export default function ArticleCard({ article }) {
 					<dd key={article.article_id + 'votes'}>votes: {voteCount}</dd>
 				</dl>
 			</ListGroupItem>
-			<button
-				onClick={() => {
-					setVoteCount((currCount) => currCount + 1);
-					incArticleVotes(article_id).catch(() => {
-						setVoteCount((currCount) => currCount - 1);
-						setIsDisabled(false);
-					});
-					setIsDisabled(true);
-				}}
-				disabled={isDisabled}>
-				Up-Vote
-			</button>
+			<Voter article={article} setVoteCount={setVoteCount}/>
 		</>
 	);
 }

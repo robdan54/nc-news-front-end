@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleById, incArticleVotes } from '../utils/articlesApi';
 import { useNavigate } from 'react-router-dom';
+import Voter from './Voter';
 
 export default function FullArticle() {
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(true);
 	const [article, setArticle] = useState({});
 	const [voteCount, setVoteCount] = useState(0);
-	const [isDisabled, setIsDisabled] = useState(false);
+
 	const { article_id } = useParams();
 
 	useEffect(() => {
@@ -38,18 +39,7 @@ export default function FullArticle() {
 				Comments: {article.comment_count}
 			</h6>
 			<h6>Votes: {voteCount}</h6>
-			<button
-				onClick={() => {
-					setVoteCount((currCount) => currCount + 1);
-					setIsDisabled(true);
-					incArticleVotes(article_id).catch(() => {
-						setVoteCount((currCount) => currCount - 1);
-						setIsDisabled(false)
-					});
-				}}
-				disabled={isDisabled}>
-				Up-Vote
-			</button>
+			<Voter article={article} setVoteCount={setVoteCount}/>
 		</article>
 	) : (
 		<h3>Loading...</h3>
