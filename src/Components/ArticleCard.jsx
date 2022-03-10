@@ -1,18 +1,9 @@
 /** @format */
 
-
-import { useState } from 'react';
 import { ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Voter from './Voter';
-
 
 export default function ArticleCard({ article }) {
-	const [voteCount, setVoteCount] = useState(article.votes)
-
-
-	
-
 	return (
 		<>
 			<ListGroupItem
@@ -24,7 +15,7 @@ export default function ArticleCard({ article }) {
 
 					<dd key={article.article_id + 'topic'}>topic: {article.topic}</dd>
 					<dd key={article.article_id + 'author'}>by: {article.author}</dd>
-					<dd key={article.article_id + 'votes'}>votes: {voteCount}</dd>
+					<dd key={article.article_id + 'votes'}>votes: {article.votes}</dd>
 				</dl>
 			</ListGroupItem>
 		</>

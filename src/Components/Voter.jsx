@@ -6,11 +6,11 @@ import { incArticleVotes } from '../utils/articlesApi';
 export default function Voter({ article, setVoteCount }) {
 	const [hasVoted, setHasVoted] = useState(false);
 
-	const handleVote = (inc) => {
-		setVoteCount((currCount) => currCount + inc);
+	const handleVote = (incVote) => {
+		setVoteCount((currCount) => currCount + incVote);
 
-		incArticleVotes(article.article_id, inc).catch(() => {
-			setVoteCount((currCount) => currCount - inc);
+		incArticleVotes(article.article_id, incVote).catch(() => {
+			setVoteCount((currCount) => currCount - incVote);
 			setHasVoted((voted) => !voted);
 		});
 		setHasVoted(!hasVoted)

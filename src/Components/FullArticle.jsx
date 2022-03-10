@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchArticleById, incArticleVotes } from '../utils/articlesApi';
+import { fetchArticleById} from '../utils/articlesApi';
 import { useNavigate } from 'react-router-dom';
 import Voter from './Voter';
 
@@ -39,7 +39,7 @@ export default function FullArticle() {
 				Comments: {article.comment_count}
 			</h6>
 			<h6>Votes: {voteCount}</h6>
-			<Voter article={article} setVoteCount={setVoteCount}/>
+			<Voter article_id={article_id} setVoteCount={setVoteCount}/>
 		</article>
 	) : (
 		<h3>Loading...</h3>
