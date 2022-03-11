@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchCommentsByArticle } from '../utils/articlesApi';
+import { fetchCommentsByArticle } from '../utils/CommentApi';
 import CommentCard from './CommentCard';
+import PostComment from './PostComment';
 
 export default function Comments() {
 	const [comments, setComments] = useState([]);
@@ -23,7 +24,8 @@ export default function Comments() {
            
 			{comments.map((comment) => {
 				return <CommentCard comment={comment} key={comment.comment_id} />;
-			})}
+            })}
+            <PostComment setComments={setComments}/>
 		</>
 	) : (
 		<h3>Loading...</h3>
