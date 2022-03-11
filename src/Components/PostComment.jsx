@@ -15,12 +15,12 @@ export default function PostComment({ setComments }) {
 		event.preventDefault();
 		setComments((currComments) => {
 			return [
+                ...currComments,
 				{
 					body: newCommentBody,
 					author: loggedUser,
 					comment_id: loggedUser + currComments.length + '_tmp',
 				},
-				...currComments,
 			];
 		});
 
