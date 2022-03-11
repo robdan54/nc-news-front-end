@@ -25,3 +25,9 @@ export const incArticleVotes = (id, inc_votes) => {
 		inc_votes
 	});
 };
+
+export const fetchCommentsByArticle = (id) => {
+	return axios.get(`https://nc-news-robin.herokuapp.com/api/articles/${id}/comments`).then((res) => {
+		return res.data.comments
+	})
+}
