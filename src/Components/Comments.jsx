@@ -19,7 +19,8 @@ export default function Comments() {
 	}, [article_id]);
 
 	return !isLoading ? (
-		<>
+        <>
+           
 			{comments.map((comment) => {
 				return <CommentCard comment={comment} key={comment.comment_id} />;
 			})}
