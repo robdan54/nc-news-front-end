@@ -74,7 +74,6 @@ export default function Home() {
 		<div className='mb-2 articleList'>
 			<ButtonGroup>
 				<Button
-					className='rounded-0'
 					id='order'
 					variant='dark'
 					style={{ alignSelf: 'end' }}
@@ -84,7 +83,6 @@ export default function Home() {
 					{order === 'asc' ? 'Ascending' : 'Descending'}
 				</Button>
 				<DropdownButton
-					className='rounded-0'
 					id='filter'
 					title={filter || 'Filter'}
 					variant='dark'
@@ -105,7 +103,6 @@ export default function Home() {
 					</Dropdown.Item>
 				</DropdownButton>
 				<DropdownButton
-					className='rounded-0'
 					id='sortBy'
 					title={sortBy || 'Sort-by'}
 					variant='dark'

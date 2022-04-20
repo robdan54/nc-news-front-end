@@ -15,3 +15,7 @@ export const postComment = (id, comment) => {
 		`https://nc-news-robin.herokuapp.com/api/articles/${id}/comments`, comment
 	);
 };
+
+export const deleteComment = (id) => {
+	return axios.delete(`https://nc-news-robin.herokuapp.com/api/comments/${id}`);
+}

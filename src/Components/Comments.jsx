@@ -11,6 +11,7 @@ export default function Comments() {
 	const navigate = useNavigate();
 	const [comments, setComments] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [isDeleting, setIsDeleting] = useState(false);
 
 	const { article_id } = useParams();
 
@@ -19,19 +20,28 @@ export default function Comments() {
 			setComments(commentsFromApi);
 			setIsLoading(false);
 		});
-	}, [article_id]);
+	}, [article_id, isDeleting]);
 
 	return !isLoading ? (
 		<div className='articleList'>
-            <Button
-                variant='dark'
+			<Button
+				variant='dark'
 				style={{ alignSelf: 'start' }}
 				onClick={() => {
 					navigate(`/article/${article_id}`);
-				}}>Back to Article</Button>
+				}}>
+				Back to Article
+			</Button>
 
 			{comments.map((comment) => {
-				return <CommentCard comment={comment} key={comment.comment_id} />;
+				return (
+					<CommentCard
+						isDeleting={isDeleting}
+						setIsDeleting={setIsDeleting}
+						comment={comment}
+						key={comment.comment_id}
+					/>
+				);
 			})}
 			<PostComment setComments={setComments} />
 		</div>
