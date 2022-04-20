@@ -3,13 +3,13 @@
 import { useState } from 'react';
 import { incArticleVotes } from '../utils/articlesApi';
 
-export default function Voter({ article, setVoteCount }) {
+export default function Voter({ article_id, setVoteCount }) {
 	const [hasVoted, setHasVoted] = useState(false);
 
 	const handleVote = (incVote) => {
 		setVoteCount((currCount) => currCount + incVote);
 
-		incArticleVotes(article.article_id, incVote).catch(() => {
+		incArticleVotes(article_id, incVote).catch(() => {
 			setVoteCount((currCount) => currCount - incVote);
 			setHasVoted((voted) => !voted);
 		});
