@@ -18,16 +18,16 @@ v17.7.2
 
 To host the project locally run the following commands
 
---bash
+```bash
 git clone https://github.com/robdan54/nc-news-front-end.git
---
+```
 navigate into the cloned directory
 
---bash
+```bash
 npm i
---
---bash
+```
+```bash
 npm run start
---
+```
 
 This should then take you to your browser with the locally hosted web page
