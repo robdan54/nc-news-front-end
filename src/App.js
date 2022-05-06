@@ -6,6 +6,8 @@ import Header from './Components/Header';
 import Home from './Components/Home';
 import FullArticle from './Components/FullArticle';
 import Comments from './Components/Comments';
+import Error from './Components/Error.jsx';
+import PostArticle from './Components/PostArticle';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { UserContext } from './Contexts/UserContext';
@@ -21,6 +23,8 @@ function App() {
 					<Route path='/' element={<Home />} />
 					<Route path='/article/:article_id' element={<FullArticle />} />
 					<Route path='/article/:article_id/comments' element={<Comments />} />
+					<Route path='/new-article' element={<PostArticle />} />
+					<Route path='/*' element={<Error />}></Route>
 				</Routes>
 			</div>
 		</UserContext.Provider>
